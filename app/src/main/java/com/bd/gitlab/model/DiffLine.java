@@ -65,14 +65,16 @@ public class DiffLine {
 
 	public List<Line> getLines() {
 		ArrayList<Line> lines = new ArrayList<Line>();
+		
+		if (message != null) {
+			String[] temp = message.split("\\r?\\n");
 
-		String[] temp = message.split("\\r?\\n");
+			for (String s : temp) {
+				Line line = new Line();
+				line.lineContent = s;
 
-		for(String s : temp) {
-			Line line = new Line();
-			line.lineContent = s;
-
-			lines.add(line);
+				lines.add(line);
+			}
 		}
 
 		return lines;
