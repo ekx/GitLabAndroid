@@ -22,6 +22,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.MimeTypeMap;
@@ -33,8 +35,10 @@ import com.bd.gitlab.tools.RetrofitHelper;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
-public class FileActivity extends Activity {
-	
+public class FileActivity extends ActionBarActivity {
+
+    @InjectView(R.id.toolbar) Toolbar toolbar;
+
 	@InjectView(R.id.file_blob) WebView fileBlobView;
 	
 	private MenuItem openFile;
@@ -47,7 +51,9 @@ public class FileActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_file);
 		ButterKnife.inject(this);
-		
+
+        setSupportActionBar(toolbar);
+
 		if(Repository.selectedFile != null) {
 			setupUI();
 			
@@ -64,9 +70,9 @@ public class FileActivity extends Activity {
 	
 	@SuppressLint("SetJavaScriptEnabled")
 	private void setupUI() {
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setTitle(Repository.selectedFile.getName());
-        getActionBar().setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(Repository.selectedFile.getName());
+        getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
 		
 		fileBlobView.getSettings().setJavaScriptEnabled(true);
 	}

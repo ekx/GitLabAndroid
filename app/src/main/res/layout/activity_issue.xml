@@ -5,20 +5,30 @@
     android:layout_height="match_parent"
     tools:context=".IssueActivity" >
 
+    <include
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        layout="@layout/toolbar" />
+
     <ScrollView
         android:id="@+id/scroll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
         android:layout_above="@+id/lsep2"
-        android:layout_alignParentTop="true"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp" >
+        android:layout_alignParentLeft="true"
+        android:paddingTop="16dp"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:id="@+id/lin1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingLeft="16dp"
             android:paddingRight="16dp" >
 
             <TextView
@@ -77,6 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dip"
         android:layout_above="@+id/rel1"
+        android:layout_alignParentLeft="true"
         android:background="?android:attr/dividerHorizontal" />
     
     <RelativeLayout
