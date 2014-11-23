@@ -1,17 +1,5 @@
 package com.bd.gitlab.tools;
 
-import java.lang.reflect.Type;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
-
-import retrofit.RestAdapter;
-import retrofit.converter.GsonConverter;
-
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -22,6 +10,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -35,7 +24,6 @@ import com.bd.gitlab.model.Issue;
 import com.bd.gitlab.model.Project;
 import com.bd.gitlab.model.TreeItem;
 import com.bd.gitlab.model.User;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -44,6 +32,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
 import org.joda.time.format.ISODateTimeFormat;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Date;
+
+import retrofit.RestAdapter;
+import retrofit.converter.GsonConverter;
 
 public class Repository extends Application {
 	
@@ -199,10 +194,10 @@ public class Repository extends Application {
 		listView.requestLayout();
 	}
 
-    public static int getScreenOrientation(Activity activity) {
-        int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
+    public static int getScreenOrientation(WindowManager windowManager) {
+        int rotation = windowManager.getDefaultDisplay().getRotation();
         DisplayMetrics dm = new DisplayMetrics();
-        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        windowManager.getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         int orientation;

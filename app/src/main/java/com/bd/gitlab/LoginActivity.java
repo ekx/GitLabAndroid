@@ -17,6 +17,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -32,8 +34,8 @@ import javax.net.ssl.SSLHandshakeException;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
-public class LoginActivity extends Activity {
-	
+public class LoginActivity extends ActionBarActivity {
+
 	@InjectView(R.id.url_input) TextView urlInput;
 	@InjectView(R.id.user_input) TextView userInput;
 	@InjectView(R.id.password_input) TextView passwordInput;

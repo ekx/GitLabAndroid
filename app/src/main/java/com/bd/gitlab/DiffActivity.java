@@ -11,6 +11,7 @@ import retrofit.client.Response;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -25,7 +26,7 @@ import com.bd.gitlab.views.MessageView;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
-public class DiffActivity extends Activity {
+public class DiffActivity extends ActionBarActivity {
 
     @InjectView(R.id.message_container)	LinearLayout messageContainer;
 	@InjectView(R.id.diff_container) LinearLayout diffContainer;
@@ -35,7 +36,9 @@ public class DiffActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_diff);
 		ButterKnife.inject(this);
-		
+
+        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.toolbar));
+
 		init();
 	}
 	
@@ -47,9 +50,9 @@ public class DiffActivity extends Activity {
 	}
 	
 	private void init() {
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setTitle(Repository.selectedCommit.getShortId());
-        getActionBar().setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(Repository.selectedCommit.getShortId());
+        getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
 
 		Repository.getService().getCommit(Repository.selectedProject.getId(), Repository.selectedCommit.getId(), commitCallback);
 		Repository.getService().getCommitDiff(Repository.selectedProject.getId(), Repository.selectedCommit.getId(), diffCallback);

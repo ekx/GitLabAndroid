@@ -1,6 +1,5 @@
 package com.bd.gitlab;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,22 +9,26 @@ import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.bd.gitlab.adapter.DrawerAdapter;
 import com.bd.gitlab.fragments.CommitsFragment;
@@ -50,21 +53,20 @@ import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
-
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends FragmentActivity implements ActionBar.OnNavigationListener, OnItemClickListener {
+public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener, OnItemClickListener {
 	
 	@InjectView(R.id.drawer_layout) DrawerLayout drawerLayout;
 	@InjectView(R.id.left_drawer) LinearLayout drawerLeft;
 	@InjectView(R.id.left_drawer_list) ListView drawerList;
 	@InjectView(R.id.pager) ViewPager viewPager;
 	@InjectView(R.id.filter_project) FilterEditText filterProjectEdit;
+    @InjectView(R.id.toolbar) Toolbar toolbar;
 
 	private ActionBar actionBar;
 	private ActionBarDrawerToggle drawerToggle;
@@ -76,9 +78,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.OnNaviga
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ButterKnife.inject(this);
-		
-		actionBar = getActionBar();
-		actionBar.setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
+
+        setSupportActionBar(toolbar);
+		actionBar = getSupportActionBar();
+//		actionBar.setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		
@@ -184,7 +187,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.OnNaviga
                 rotationLocked = item.isChecked();
 
                 if(rotationLocked)
-                    setRequestedOrientation(Repository.getScreenOrientation(this));
+                    setRequestedOrientation(Repository.getScreenOrientation(this.getWindowManager()));
                 else
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
                 return true;

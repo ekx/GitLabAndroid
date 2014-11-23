@@ -13,10 +13,11 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,8 +44,10 @@ import com.bd.gitlab.tools.RetrofitHelper;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
-public class IssueActivity extends Activity {
-	
+public class IssueActivity extends ActionBarActivity {
+
+    @InjectView(R.id.toolbar) Toolbar toolbar;
+
 	@InjectView(R.id.scroll1) ScrollView scroll;
 	
 	@InjectView(R.id.title) TextView title;
@@ -64,7 +67,9 @@ public class IssueActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_issue);
 		ButterKnife.inject(this);
-		
+
+        setSupportActionBar(toolbar);
+
 		if(Repository.selectedIssue != null) {
 			setupUI();
 			loadNotes();
@@ -88,9 +93,9 @@ public class IssueActivity extends Activity {
 		if(tempId < 1)
 			tempId = Repository.selectedIssue.getId();
 		
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setTitle("Issue #" + tempId);
-        getActionBar().setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Issue #" + tempId);
+        getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
 		
 		title.setText(Repository.selectedIssue.getTitle());
 		
