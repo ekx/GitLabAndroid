@@ -1,5 +1,3 @@
-import com.android.build.gradle.tasks.PackageApplication
-
 apply plugin: 'android'
 apply from: 'signing.gradle'
 
@@ -43,18 +41,4 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.0'
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
-}
-
-task copyNativeLibs(type: Copy) {
-    from(new File(getProjectDir(), 'native-libs')) { include '**/*.so' }
-    into new File(buildDir, 'native-libs')
-}
-
-tasks.withType(Compile) { compileTask -> compileTask.dependsOn copyNativeLibs }
-
-clean.dependsOn 'cleanCopyNativeLibs'
-
-tasks.withType(PackageApplication) { pkgTask ->
-    pkgTask.jniFolders = new HashSet<File>()
-    pkgTask.jniFolders.add(new File(buildDir, 'native-libs'))
 }
