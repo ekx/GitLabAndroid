@@ -90,7 +90,7 @@ public class IssueActivity extends Activity {
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setTitle("Issue #" + tempId);
-        getActionBar().setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
+        getActionBar().setIcon(getResources().getDrawable(R.drawable.ic_launcher));
 		
 		title.setText(Repository.selectedIssue.getTitle());
 		

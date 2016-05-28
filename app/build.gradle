@@ -1,6 +1,6 @@
 import com.android.build.gradle.tasks.PackageApplication
 
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 apply from: 'signing.gradle'
 
 android {
@@ -10,22 +10,27 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 37
-        versionName "1.6.0"
+        versionCode 38
+        versionName "1.6.1"
     }
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             debuggable false
-            jniDebugBuild false
-            zipAlign true
+            jniDebuggable false
+            zipAlignEnabled true
         }
     }
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'native-libs'
+        }
     }
 }
 
@@ -43,18 +48,4 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.0'
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
-}
-
-task copyNativeLibs(type: Copy) {
-    from(new File(getProjectDir(), 'native-libs')) { include '**/*.so' }
-    into new File(buildDir, 'native-libs')
-}
-
-tasks.withType(Compile) { compileTask -> compileTask.dependsOn copyNativeLibs }
-
-clean.dependsOn 'cleanCopyNativeLibs'
-
-tasks.withType(PackageApplication) { pkgTask ->
-    pkgTask.jniFolders = new HashSet<File>()
-    pkgTask.jniFolders.add(new File(buildDir, 'native-libs'))
 }

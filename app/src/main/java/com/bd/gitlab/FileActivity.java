@@ -66,7 +66,7 @@ public class FileActivity extends Activity {
 	private void setupUI() {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setTitle(Repository.selectedFile.getName());
-        getActionBar().setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
+        getActionBar().setIcon(getResources().getDrawable(R.drawable.ic_launcher));
 		
 		fileBlobView.getSettings().setJavaScriptEnabled(true);
 	}

@@ -49,7 +49,7 @@ public class DiffActivity extends Activity {
 	private void init() {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setTitle(Repository.selectedCommit.getShortId());
-        getActionBar().setIcon(getResources().getDrawable(R.drawable.ic_actionbar));
+        getActionBar().setIcon(getResources().getDrawable(R.drawable.ic_launcher));
 
 		Repository.getService().getCommit(Repository.selectedProject.getId(), Repository.selectedCommit.getId(), commitCallback);
 		Repository.getService().getCommitDiff(Repository.selectedProject.getId(), Repository.selectedCommit.getId(), diffCallback);
