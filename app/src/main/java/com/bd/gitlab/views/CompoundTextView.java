@@ -7,6 +7,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import com.bd.gitlab.util.BitmapUtil;
+import com.bd.gitlab.util.DensityUtil;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -40,6 +42,7 @@ public class CompoundTextView extends TextView implements Target {
     }
 
     private void setImage(Drawable drawable) {
+        drawable = BitmapUtil.zoomDrawable(drawable, DensityUtil.dip2px(getContext(),90), DensityUtil.dip2px(getContext(),90));
         this.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
     }
 }
