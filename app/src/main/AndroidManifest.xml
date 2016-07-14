@@ -50,7 +50,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bd.gitlab.MainActivity" />
         </activity>
-
+        <activity
+            android:name="com.bd.gitlab.ProfileActivity"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName="com.bd.gitlab.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bd.gitlab.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

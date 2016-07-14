@@ -4,6 +4,7 @@
     <string name="app_name">DroidLab</string>
 
     <!-- Menu -->
+    <string name="profile_button">Profile</string>
     <string name="action_lock_orientation">Lock orientation</string>
     <string name="action_logout">Logout</string>
     <string name="action_save">Save</string>

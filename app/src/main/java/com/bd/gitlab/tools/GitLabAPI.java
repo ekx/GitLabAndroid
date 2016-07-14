@@ -93,7 +93,9 @@ public interface GitLabAPI {
 	void getBlob(@Path("id") long projectId, @Path("sha") String commitId, @Query("filepath") String path, Callback<Response> cb);
 	
 	/* --- USER --- */
-	
+	@GET("/user")
+	void getUser(Callback<User> cb);
+
 	@GET("/groups/{id}/members?per_page=100")
 	void getGroupMembers(@Path("id") long groupId, Callback<List<User>> cb);
 	
