@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bd.gitlab.R;
 import com.bd.gitlab.model.Issue;
 import com.bd.gitlab.tools.Repository;
+import com.bd.gitlab.views.CircleTransform;
 import com.bd.gitlab.views.CompoundTextView;
 
 import com.squareup.picasso.Picasso;
@@ -91,7 +92,7 @@ public class IssuesAdapter extends BaseAdapter {
 		}
 		
 		summary.setText(assigneeName);
-        Picasso.with(convertView.getContext()).load(assigneeAvatarUrl).into(summary);
+        Picasso.with(convertView.getContext()).load(assigneeAvatarUrl).placeholder(R.drawable.default_avatar).transform(new CircleTransform()).into(summary);
 
 		return convertView;
 	}
