@@ -85,6 +85,16 @@
     <string name="add_user">Add user to group</string>
     <string name="add_user_dialog_title">Add user</string>
 
+    <!-- profile -->
+    <string name="email">Email&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="public_email">Public email</string>
+    <string name="skype">Skype&#160;&#160;&#160;&#160;</string>
+    <string name="linkedin">Linkedin</string>
+    <string name="twitter">Twitter&#160;&#160;&#160;</string>
+    <string name="website">Website&#160;&#160;</string>
+    <string name="location">Location</string>
+    <string name="bio">Bio&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+
     <string-array name="role_names">
         <item>Guest</item>
         <item>Reporter</item>
