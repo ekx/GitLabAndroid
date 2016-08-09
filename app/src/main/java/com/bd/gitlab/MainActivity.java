@@ -188,6 +188,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.OnNaviga
                 else
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
                 return true;
+			case R.id.profile:
+				Intent i = new Intent(MainActivity.this,ProfileActivity.class);
+				startActivity(i);
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bd.gitlab.R;
 import com.bd.gitlab.model.User;
 import com.bd.gitlab.tools.Repository;
+import com.bd.gitlab.views.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 import fr.tkeunebr.gravatar.Gravatar;
@@ -96,7 +97,7 @@ public class UserAdapter extends BaseAdapter {
         else if(users.get(position).getAvatarUrl() != null)
             url = users.get(position).getAvatarUrl() + "&s=" + size;
 
-        Picasso.with(convertView.getContext()).load(url).into(icon);
+        Picasso.with(convertView.getContext()).load(url).placeholder(R.drawable.default_avatar).transform(new CircleTransform()).into(icon);
 		
 		return convertView;
 	}

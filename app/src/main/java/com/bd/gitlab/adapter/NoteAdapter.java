@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.bd.gitlab.R;
 import com.bd.gitlab.model.Note;
 import com.bd.gitlab.tools.Repository;
+import com.bd.gitlab.views.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 public class NoteAdapter extends BaseAdapter {
@@ -90,7 +91,7 @@ public class NoteAdapter extends BaseAdapter {
         else if(notes.get(position).getAuthor().getAvatarUrl() != null)
             url = notes.get(position).getAuthor().getAvatarUrl() + "&s=" + size;
 
-        Picasso.with(convertView.getContext()).load(url).into(icon);
+        Picasso.with(convertView.getContext()).load(url).placeholder(R.drawable.default_avatar).transform(new CircleTransform()).into(icon);
 
 		return convertView;
 	}

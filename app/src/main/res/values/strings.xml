@@ -4,6 +4,7 @@
     <string name="app_name">DroidLab</string>
 
     <!-- Menu -->
+    <string name="profile_button">Profile</string>
     <string name="action_lock_orientation">Lock orientation</string>
     <string name="action_logout">Logout</string>
     <string name="action_save">Save</string>
@@ -83,6 +84,16 @@
     <string name="remove_user_dialog_title">Remove user?</string>
     <string name="add_user">Add user to group</string>
     <string name="add_user_dialog_title">Add user</string>
+
+    <!-- profile -->
+    <string name="email">Email&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="public_email">Public email</string>
+    <string name="skype">Skype&#160;&#160;&#160;&#160;</string>
+    <string name="linkedin">Linkedin</string>
+    <string name="twitter">Twitter&#160;&#160;&#160;</string>
+    <string name="website">Website&#160;&#160;</string>
+    <string name="location">Location</string>
+    <string name="bio">Bio&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
 
     <string-array name="role_names">
         <item>Guest</item>
